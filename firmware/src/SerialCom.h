@@ -27,7 +27,7 @@ void serialPrintDateTime(short year, short month, short day, String dayOfTheWeek
 
     if (alarmSet)
     {
-        Serial.print(" - ");
+        Serial.print(" - Alarm Set ");
         Serial.print(alarmHour);
         Serial.print(':');
         Serial.print(alarmMinute);

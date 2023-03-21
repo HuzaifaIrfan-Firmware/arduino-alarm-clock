@@ -13,6 +13,9 @@ bool alarmSettingView = false;
 
 void alarmSetup()
 {
+    alarmSet = loadAlarmSet();
+    alarmHour = loadAlarmHour();
+    alarmMinute = loadAlarmMinute();
 }
 
 void resetAlarm()
@@ -28,6 +31,7 @@ void resetAlarm()
     {
         alarmSet = false;
         Serial.println("Alarm Off");
+        saveAlarmSet(alarmSet);
     }
 }
 
@@ -43,6 +47,9 @@ void setAlarm()
         {
             alarmSettingView = false;
             alarmSet = true;
+            saveAlarmSet(alarmSet);
+            saveAlarmHour(alarmHour);
+            saveAlarmMinute(alarmMinute);
         }
     }
 }

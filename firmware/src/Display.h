@@ -7,9 +7,20 @@
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
 
+byte Bell[] = {
+  B00100,
+  B01110,
+  B01110,
+  B01110,
+  B11111,
+  B00000,
+  B00100,
+  B00000
+};
 
 void displaySetup(){
   lcd.begin(16, 2);
+  lcd.createChar(1, Bell);
   lcd.clear();
 }
 
@@ -36,6 +47,7 @@ void displayDateTime(short year, short month, short day, String dayOfTheWeek, sh
     lcd.print("  ");
 
     if(alarmSet){
+      lcd.write(byte(1));
       if(alarmSettingView and not cursor){
         lcd.print(">");
       }
