@@ -4,7 +4,7 @@
 #include "Arduino.h"
 
 short buzzerPin = 13;
-bool buz=false;
+bool buzNow=false;
 
 void buzzerSetup(){
 
@@ -16,10 +16,10 @@ void buzzerSetup(){
 
 void buzzerLoop(){
     if(Serial.available()){
-      buz=true;
+      buzNow=true;
     }
 
-    if(buz){
+    if(buzNow){
       // digitalWrite(buzzerPin, HIGH);
       for(int i = 0; i  < 4; i++){
         digitalWrite(buzzerPin, HIGH);
@@ -27,7 +27,7 @@ void buzzerLoop(){
         digitalWrite(buzzerPin, LOW);
         delay(200);
       }
-      delay(2000);
+
 
     }
 

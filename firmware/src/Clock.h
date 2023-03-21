@@ -9,6 +9,11 @@
 
 RTC_DS1307 rtc;
 
+
+char daysOfTheWeek[7][4] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+
+
+
 void clockSetup(){
 
 
@@ -37,46 +42,61 @@ void clockSetup(){
 }
 
 
-void clockLoop(){
-
-      DateTime now = rtc.now();
-
-    Serial.print(now.year(), DEC);
+void serialPrintDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second){
+    Serial.print(year);
     Serial.print('/');
-    Serial.print(now.month(), DEC);
+    Serial.print(month);
     Serial.print('/');
-    Serial.print(now.day(), DEC);
-    Serial.print(" (");
-    Serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
-    Serial.print(") ");
-    Serial.print(now.hour(), DEC);
+    Serial.print(day);
+    Serial.print("-");
+    Serial.print(dayOfTheWeek);
+    Serial.print("-");
+    Serial.print(hour);
     Serial.print(':');
-    Serial.print(now.minute(), DEC);
+    Serial.print(minute);
     Serial.print(':');
-    Serial.print(now.second(), DEC);
+    Serial.print(second);
     Serial.println();
+}
+
+void displayDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second){
+
 
     lcd.setCursor(0,0);
-    lcd.print(now.year());
+    lcd.print(year);
     lcd.print("/");
-    lcd.print(now.month());
+    lcd.print(month);
     lcd.print("/");
-    lcd.print(now.day());
+    lcd.print(day);
     lcd.print("-");
-    lcd.print(daysOfTheWeek[now.dayOfTheWeek()]);
+    lcd.print(dayOfTheWeek);
     lcd.print("  ");
 
     lcd.setCursor(0,1);
 
-    lcd.print(now.hour());
+    lcd.print(hour);
     lcd.print(":");
-    lcd.print(now.minute());
+    lcd.print(minute);
     lcd.print(":");
-    lcd.print(now.second());
+    lcd.print(second);
     lcd.print("    ");
+}
 
 
-    delay(100);
+void clockLoop(){
+
+      DateTime now = rtc.now();
+
+      short year = now.year();
+      short month = now.month();
+      short day = now.day();
+      String dayOfTheWeek = daysOfTheWeek[now.dayOfTheWeek()];
+      short hour = now.hour();
+      short minute = now.minute();
+      short second = now.second();
+
+      serialPrintDateTime(year,month,day,dayOfTheWeek,hour,minute,second);
+      displayDateTime(year,month,day,dayOfTheWeek,hour,minute,second);
 
 }
 

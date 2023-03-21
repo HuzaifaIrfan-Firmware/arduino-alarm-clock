@@ -5,13 +5,16 @@
 #include "Arduino.h"
 
 
+bool alarmSet = false;
+
+
 void alarmSetup(){
 
 }
 
 
 void alarmLoop(){
-
+    
 }
 
 #endif
