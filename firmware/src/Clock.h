@@ -42,61 +42,11 @@ void clockSetup(){
 }
 
 
-void serialPrintDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second){
-    Serial.print(year);
-    Serial.print('/');
-    Serial.print(month);
-    Serial.print('/');
-    Serial.print(day);
-    Serial.print("-");
-    Serial.print(dayOfTheWeek);
-    Serial.print("-");
-    Serial.print(hour);
-    Serial.print(':');
-    Serial.print(minute);
-    Serial.print(':');
-    Serial.print(second);
-    Serial.println();
-}
-
-void displayDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second){
-
-
-    lcd.setCursor(0,0);
-    lcd.print(year);
-    lcd.print("/");
-    lcd.print(month);
-    lcd.print("/");
-    lcd.print(day);
-    lcd.print("-");
-    lcd.print(dayOfTheWeek);
-    lcd.print("  ");
-
-    lcd.setCursor(0,1);
-
-    lcd.print(hour);
-    lcd.print(":");
-    lcd.print(minute);
-    lcd.print(":");
-    lcd.print(second);
-    lcd.print("    ");
-}
 
 
 void clockLoop(){
 
-      DateTime now = rtc.now();
 
-      short year = now.year();
-      short month = now.month();
-      short day = now.day();
-      String dayOfTheWeek = daysOfTheWeek[now.dayOfTheWeek()];
-      short hour = now.hour();
-      short minute = now.minute();
-      short second = now.second();
-
-      serialPrintDateTime(year,month,day,dayOfTheWeek,hour,minute,second);
-      displayDateTime(year,month,day,dayOfTheWeek,hour,minute,second);
 
 }
 

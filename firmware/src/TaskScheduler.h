@@ -9,17 +9,23 @@
 void schedulerSetup(){
 
     taskManager.scheduleFixedRate(900, [] {
-      clockLoop();
+      alarmLoop();
     });
 
-taskManager.scheduleFixedRate(100, [] {
+taskManager.scheduleFixedRate(50, [] {
     controlsLoop();
     });
 
 
-taskManager.scheduleFixedRate(1800, [] {
+taskManager.scheduleFixedRate(10, [] {
+    serialLoop();
+    });
+
+
+taskManager.scheduleFixedRate(200, [] {
     buzzerLoop();
     });
+
 
 }
 

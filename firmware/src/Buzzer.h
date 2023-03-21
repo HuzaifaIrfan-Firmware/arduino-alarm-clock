@@ -3,35 +3,37 @@
 
 #include "Arduino.h"
 
-short buzzerPin = 13;
-bool buzNow=false;
+short buzzerPin = A2;
+bool buzz = false;
+bool buzNow = false;
 
-void buzzerSetup(){
+void buzzerSetup()
+{
 
   pinMode(buzzerPin, OUTPUT);
-
-
 }
 
 
-void buzzerLoop(){
-    if(Serial.available()){
-      buzNow=true;
+
+void buzzerLoop()
+{
+  if (buzz)
+  {
+    if (buzNow)
+    {
+      digitalWrite(buzzerPin, HIGH);
+      Serial.println("Buz Now");
     }
-
-    if(buzNow){
-      // digitalWrite(buzzerPin, HIGH);
-      for(int i = 0; i  < 4; i++){
-        digitalWrite(buzzerPin, HIGH);
-        delay(200);
-        digitalWrite(buzzerPin, LOW);
-        delay(200);
-      }
-
-
+    else
+    {
+      digitalWrite(buzzerPin, LOW);
     }
-
+    buzNow = not buzNow;
+  }
+  else
+  {
+    digitalWrite(buzzerPin, LOW);
+  }
 }
-
 
 #endif
