@@ -4,6 +4,7 @@
 
 #include <LiquidCrystal.h>  
 #include "RTClib.h"
+#include <EasyBuzzer.h>
 
 RTC_DS1307 rtc;
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
@@ -13,16 +14,14 @@ bool buz=false;
 char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};
 
 void setup () {
-  Serial.begin(9600);
+  Serial.begin(115200);
   lcd.begin(16, 2);
   lcd.clear();
 
   pinMode(buzzerPin, OUTPUT);
+  EasyBuzzer.setPin(buzzerPin);
 
 
-#ifndef ESP8266
-  while (!Serial); // wait for serial port to connect. Needed for native USB
-#endif
 
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
@@ -49,6 +48,7 @@ void setup () {
 }
 
 void loop () {
+    EasyBuzzer.update();
     DateTime now = rtc.now();
 
     Serial.print(now.year(), DEC);
@@ -90,9 +90,16 @@ void loop () {
 
     if(buz){
       // digitalWrite(buzzerPin, HIGH);
-      tone(buzzerPin, 1000);
+      for(int i = 0; i  < 4; i++){
+        digitalWrite(buzzerPin, HIGH);
+        delay(200);
+        digitalWrite(buzzerPin, LOW);
+        delay(200);
+      }
+      delay(2000);
+
     }
 
 
-    delay(1000);
+    delay(100);
 }
