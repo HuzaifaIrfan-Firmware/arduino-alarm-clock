@@ -37,8 +37,7 @@ void resetAlarm()
 
 void setAlarm()
 {
-    if (not alarmSet)
-    {
+
         if (not alarmSettingView)
         {
             alarmSettingView = true;
@@ -51,7 +50,7 @@ void setAlarm()
             saveAlarmHour(alarmHour);
             saveAlarmMinute(alarmMinute);
         }
-    }
+
 }
 
 void increaseValue()
