@@ -18,7 +18,7 @@ void storageLoop()
 bool loadAlarmSet()
 {
     short storedValue = 0;
-    EEPROM.get(1, storedValue);
+    EEPROM.get(10, storedValue);
     if (storedValue == 0 or storedValue == 1)
     {
         return storedValue;
@@ -30,13 +30,13 @@ bool loadAlarmSet()
 }
 
 void saveAlarmSet(short value){
-    EEPROM.put(1, value);
+    EEPROM.put(10, value);
 }
 
 short loadAlarmHour()
 {
     short storedValue = 0;
-    EEPROM.get(2, storedValue);
+    EEPROM.get(20, storedValue);
 
     if (storedValue < 24 and storedValue >= 0)
     {
@@ -49,14 +49,14 @@ short loadAlarmHour()
 }
 
 void saveAlarmHour(short value){
-    EEPROM.put(2, value);
+    EEPROM.put(20, value);
 }
 
 
 short loadAlarmMinute()
 {
     short storedValue = 0;
-    EEPROM.get(3, storedValue);
+    EEPROM.get(30, storedValue);
     if (storedValue < 60 and storedValue >= 0)
     {
         return storedValue;
@@ -68,7 +68,7 @@ short loadAlarmMinute()
 }
 
 void saveAlarmMinute(short value){
-    EEPROM.put(3, value);
+    EEPROM.put(30, value);
 }
 
 

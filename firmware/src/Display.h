@@ -22,6 +22,12 @@ void displaySetup(){
   lcd.begin(16, 2);
   lcd.createChar(1, Bell);
   lcd.clear();
+
+    lcd.setCursor(0,0);
+    lcd.print("Alarm Clock By");
+    lcd.setCursor(0,1);
+    lcd.print("Huzaifa Irfan");
+    delay(400);
 }
 
 void displayDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second, bool alarmSet, bool alarmSettingView, bool cursor, short alarmHour, short alarmMinute){
@@ -44,7 +50,7 @@ void displayDateTime(short year, short month, short day, String dayOfTheWeek, sh
     lcd.print(minute);
     lcd.print(":");
     lcd.print(second);
-    lcd.print("  ");
+    lcd.print(" ");
 
     if(alarmSet){
       lcd.write(byte(1));
