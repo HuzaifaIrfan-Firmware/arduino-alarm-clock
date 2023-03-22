@@ -3,6 +3,9 @@
 
 
 #include "Arduino.h"
+
+#include "Utils.h"
+
 #include <LiquidCrystal.h>  
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
@@ -34,22 +37,22 @@ void displayDateTime(short year, short month, short day, String dayOfTheWeek, sh
 
 
     lcd.setCursor(0,0);
-    lcd.print(year);
+    lcd.print(getLeadingZeroNumber(year));
     lcd.print("/");
-    lcd.print(month);
+    lcd.print(getLeadingZeroNumber(month));
     lcd.print("/");
-    lcd.print(day);
-    lcd.print(" - ");
+    lcd.print(getLeadingZeroNumber(day));
+    lcd.print(" ");
     lcd.print(dayOfTheWeek);
     lcd.print("  ");
 
     lcd.setCursor(0,1);
 
-    lcd.print(hour);
+    lcd.print(getLeadingZeroNumber(hour));
     lcd.print(":");
-    lcd.print(minute);
+    lcd.print(getLeadingZeroNumber(minute));
     lcd.print(":");
-    lcd.print(second);
+    lcd.print(getLeadingZeroNumber(second));
     lcd.print(" ");
 
     if(alarmSet){
@@ -57,12 +60,12 @@ void displayDateTime(short year, short month, short day, String dayOfTheWeek, sh
       if(alarmSettingView and not cursor){
         lcd.print(">");
       }
-      lcd.print(alarmHour);
+      lcd.print(getLeadingZeroNumber(alarmHour));
       lcd.print(":");
       if(alarmSettingView and cursor){
         lcd.print(">");
       }
-      lcd.print(alarmMinute);
+      lcd.print(getLeadingZeroNumber(alarmMinute));
     }
 
     lcd.print("       ");

@@ -1,5 +1,7 @@
 #include "Arduino.h"
 
+#include "Utils.h"
+
 #include "Storage.h"
 #include "SerialCom.h"
 
