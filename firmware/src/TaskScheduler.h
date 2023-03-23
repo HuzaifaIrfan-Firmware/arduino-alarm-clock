@@ -8,7 +8,7 @@
 
 void schedulerSetup(){
 
-    taskManager.scheduleFixedRate(900, [] {
+    taskManager.scheduleFixedRate(1000, [] {
       alarmLoop();
     });
 
