@@ -6,7 +6,7 @@
 
 void serialSetup()
 {
-    Serial.begin(115200);
+    Serial.begin(9600);
 }
 
 void serialPrintDateTime(short year, short month, short day, String dayOfTheWeek, short hour, short minute, short second, bool alarmSet, short alarmHour, short alarmMinute)

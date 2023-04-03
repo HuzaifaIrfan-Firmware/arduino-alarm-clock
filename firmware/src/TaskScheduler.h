@@ -18,7 +18,7 @@ taskManager.scheduleFixedRate(50, [] {
 
 
 taskManager.scheduleFixedRate(10, [] {
-    serialLoop();
+    bluetoothSerialLoop();
     });
 
 
