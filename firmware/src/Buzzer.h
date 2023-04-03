@@ -36,4 +36,13 @@ void buzzerLoop()
   }
 }
 
+
+    void test_buzzer(){
+        buzz=true;
+    }
+
+      void  turn_off_buzzer(){
+        buzz=false;
+      }
+
 #endif

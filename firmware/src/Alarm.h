@@ -191,4 +191,22 @@ void alarmLoop()
     displayDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmSettingView, cursor, alarmHour, alarmMinute);
 }
 
+
+       void set_alarm(short alarm_hour,short alarm_minute){
+
+            alarmHour = alarm_hour;
+            alarmMinute = alarm_minute;
+            
+            alarmSettingView = false;
+            alarmSet = true;
+            saveAlarmSet(alarmSet);
+            saveAlarmHour(alarmHour);
+            saveAlarmMinute(alarmMinute);
+
+       }
+
+       void turn_off_alarm(){
+            resetAlarm();
+       }
+
 #endif

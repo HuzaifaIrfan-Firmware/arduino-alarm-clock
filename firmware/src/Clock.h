@@ -9,21 +9,21 @@
 
 RTC_DS1307 rtc;
 
-
 char daysOfTheWeek[7][4] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
+void clockSetup()
+{
 
-
-void clockSetup(){
-
-
-  if (! rtc.begin()) {
+  if (!rtc.begin())
+  {
     Serial.println("Couldn't find RTC");
     Serial.flush();
-    while (1) delay(10);
+    while (1)
+      delay(10);
   }
 
-  if (! rtc.isrunning()) {
+  if (!rtc.isrunning())
+  {
     Serial.println("RTC is NOT running, let's set the time!");
     // When time needs to be set on a new device, or after a power loss, the
     // following line sets the RTC to the date & time this sketch was compiled
@@ -41,13 +41,31 @@ void clockSetup(){
   // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
 }
 
+void clockLoop()
+{
+}
 
+void set_date(short year, short month, short day)
+{
+  DateTime now = rtc.now();
 
+  short hour = now.hour();
+  short minute = now.minute();
+  short second = now.second();
 
-void clockLoop(){
+  rtc.adjust(DateTime(year, month, day, hour, minute, second));
+}
 
+void set_time(short hour, short minute, short second)
+{
 
+  DateTime now = rtc.now();
 
+  short year = now.year();
+  short month = now.month();
+  short day = now.day();
+
+  rtc.adjust(DateTime(year, month, day, hour, minute, second));
 }
 
 #endif

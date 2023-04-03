@@ -74,14 +74,14 @@ void controlsLoop()
 
 
 
-short value;
-void serialLoop()
-{
-    if(Serial.available() > 0){
-        value = Serial.parseInt();
-        setCursorValue(value);
+// short value;
+// void serialLoop()
+// {
+//     if(Serial.available() > 0){
+//         value = Serial.parseInt();
+//         setCursorValue(value);
         
-    }
-}
+//     }
+// }
 
 #endif
