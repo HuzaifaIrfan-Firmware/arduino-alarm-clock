@@ -14,7 +14,7 @@ void bluetoothSerialSetup(){
 
   // set the data rate for the SoftwareSerial port
   mySerial.begin(9600);
-  mySerial.println("Hello, world?");
+  // mySerial.println("Hello, world?");
 
 }
 
@@ -38,7 +38,7 @@ return serialData;
 
 void bluetoothSendState(short year,short month,short day,short dayOfTheWeekIndex,short hour,short minute,short second,short alarmSet,short alarmHour,short alarmMinute,short buzz){
     
-    mySerial.print(',');
+    mySerial.print('>');
     mySerial.print(year);
     mySerial.print(',');
       mySerial.print(month);
@@ -60,7 +60,7 @@ void bluetoothSendState(short year,short month,short day,short dayOfTheWeekIndex
         mySerial.print(alarmMinute);
     mySerial.print(',');
         mySerial.print(buzz);
-    mySerial.println(',');
+    mySerial.println('>');
 
 }
 

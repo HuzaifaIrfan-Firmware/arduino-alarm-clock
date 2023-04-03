@@ -24,13 +24,13 @@ void resetAlarm()
     if (buzz)
     {
         buzz = false;
-        Serial.println("Buzz Off");
+        // Serial.println("Buzz Off");
     }
 
     if (alarmSet)
     {
         alarmSet = false;
-        Serial.println("Alarm Off");
+        // Serial.println("Alarm Off");
         saveAlarmSet(alarmSet);
     }
 }
@@ -186,7 +186,7 @@ void alarmLoop()
 
     
 
-    serialPrintDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmHour, alarmMinute);
+    serialSendState(year, month, day, dayOfTheWeekIndex, hour, minute, second,alarmSet, alarmHour, alarmMinute, buzz);
     bluetoothSendState(year, month, day, dayOfTheWeekIndex, hour, minute, second,alarmSet, alarmHour, alarmMinute, buzz);
     displayDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmSettingView, cursor, alarmHour, alarmMinute);
 }

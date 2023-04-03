@@ -22,7 +22,7 @@ void buzzerLoop()
     if (buzNow)
     {
       digitalWrite(buzzerPin, HIGH);
-      Serial.println("Buz Now");
+      // Serial.println("Buz Now");
     }
     else
     {
