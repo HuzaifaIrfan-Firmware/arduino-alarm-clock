@@ -18,15 +18,51 @@ void bluetoothSerialSetup(){
 
 }
 
-void bluetoothSerialLoop(){
+String bluetoothSerialLoop(){
 
+  String serialData; 
   if (mySerial.available()) {
-    Serial.write(mySerial.read());
+    serialData=mySerial.readStringUntil('\n');
+    Serial.println(serialData);
+
+
   }
-  if (Serial.available()) {
-    mySerial.write(Serial.read());
+  else if (Serial.available()) {
+    serialData=Serial.readStringUntil('\n');
+    mySerial.println(serialData);
+
+
   }
+return serialData;
+}
+
+void bluetoothSendState(short year,short month,short day,short dayOfTheWeekIndex,short hour,short minute,short second,short alarmSet,short alarmHour,short alarmMinute,short buzz){
+    
+    mySerial.print(',');
+    mySerial.print(year);
+    mySerial.print(',');
+      mySerial.print(month);
+    mySerial.print(',');
+        mySerial.print(day);
+    mySerial.print(',');
+        mySerial.print(dayOfTheWeekIndex);
+    mySerial.print(',');
+        mySerial.print(hour);
+    mySerial.print(',');
+        mySerial.print(minute);
+    mySerial.print(',');
+        mySerial.print(second);
+    mySerial.print(',');
+        mySerial.print(alarmSet);
+    mySerial.print(',');
+        mySerial.print(alarmHour);
+    mySerial.print(',');
+        mySerial.print(alarmMinute);
+    mySerial.print(',');
+        mySerial.print(buzz);
+    mySerial.println(',');
 
 }
+
 
 #endif

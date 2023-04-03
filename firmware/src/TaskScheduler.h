@@ -6,9 +6,30 @@
 #include "TaskManagerIO.h"
 
 
+
+#include "Utils.h"
+
+
+#include "Storage.h"
+
+#include "BluetoothSerial.h"
+#include "SerialCom.h"
+
+#include "Display.h"
+#include "Clock.h"
+#include "Buzzer.h"
+#include "Alarm.h"
+#include "Controls.h"
+
+#include "BluetoothControls.h"
+
+
+
+
+
 void schedulerSetup(){
 
-    taskManager.scheduleFixedRate(1000, [] {
+    taskManager.scheduleFixedRate(500, [] {
       alarmLoop();
     });
 
@@ -18,7 +39,9 @@ taskManager.scheduleFixedRate(50, [] {
 
 
 taskManager.scheduleFixedRate(10, [] {
-    bluetoothSerialLoop();
+
+
+    bluetoothControlsLoop(bluetoothSerialLoop());
     });
 
 

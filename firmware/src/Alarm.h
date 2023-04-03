@@ -170,7 +170,8 @@ void alarmLoop()
     short year = now.year();
     short month = now.month();
     short day = now.day();
-    String dayOfTheWeek = daysOfTheWeek[now.dayOfTheWeek()];
+    short dayOfTheWeekIndex = now.dayOfTheWeek();
+    String dayOfTheWeek = daysOfTheWeek[dayOfTheWeekIndex];
     short hour = now.hour();
     short minute = now.minute();
     short second = now.second();
@@ -183,8 +184,10 @@ void alarmLoop()
         }
     }
 
-    serialPrintDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmHour, alarmMinute);
+    
 
+    serialPrintDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmHour, alarmMinute);
+    bluetoothSendState(year, month, day, dayOfTheWeekIndex, hour, minute, second,alarmSet, alarmHour, alarmMinute, buzz);
     displayDateTime(year, month, day, dayOfTheWeek, hour, minute, second, (alarmSet or alarmSettingView), alarmSettingView, cursor, alarmHour, alarmMinute);
 }
 

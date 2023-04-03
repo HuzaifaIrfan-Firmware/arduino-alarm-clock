@@ -14,6 +14,9 @@
 #include "Alarm.h"
 #include "Controls.h"
 
+#include "BluetoothControls.h"
+
+
 
 
 #include "TaskScheduler.h"
@@ -30,6 +33,8 @@ void setup()
     buzzerSetup();
     alarmSetup();
     controlsSetup();
+
+    bluetoothControlsSetup();
 
     schedulerSetup();
 }
