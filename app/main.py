@@ -34,14 +34,13 @@ serialcom=SerialCOM(comport,9600)
 
 
 DAYS_OF_WEEK = [
-    'None',
+    'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
-    'Saturday',
-    'Sunday'
+    'Saturday'
     ]
 
 MONTHS = [
