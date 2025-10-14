@@ -13,6 +13,19 @@
 - Real Time Clock Module
 - Set and Save Alarm Time in EEPROM
 
+## Included in Repo
+- Arduino Firmware
+- Python GUI App
+- Android App
+
+
+## Components Used
+- Arduino Uno
+- Buzzer (Connected to A2)
+- DS3231 Real Time Clock Module (Connected to I2C)
+- LCD Keypad Shield
+- HC-06 Bluetooth Module (Connected to SoftwareSerial UART [Pin 10 RX] to TX of Module, [Pin 11 TX] to RX of Module)
+
 
 ### LCD Keypad
 ![lcd keypad](lcd.jpg)
@@ -24,18 +37,6 @@
 ![python app](python_app.jpg)
 
 
-## Included in Repo
-- Arduino Firmware
-- Python GUI App
-- Android App
-
-
-## Components Used
-- Arduino Uno
-- Buzzer
-- DS3231 Real Time Clock Module
-- LCD Keypad Shield
-- HC-06 Bluetooth Module
 
 
 
